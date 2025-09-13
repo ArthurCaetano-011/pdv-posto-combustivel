@@ -1,5 +1,7 @@
 package com.br.pdvpostocombustivel;
 
+
+import com.br.pdvpostocombustivel.domain.entity.Pessoa;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,7 +9,45 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PdvpostocombustivelApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PdvpostocombustivelApplication.class, args);
-	}
+		//SpringApplication.run(PdvpostocombustivelApplication.class, args);
+        Pessoa pessoa1 = new Pessoa();
+        pessoa1.setNomeCompleto("Júlio Cesar");
+        pessoa1.setCpfCnpj("151.343.881-99");
+        //pessoa1.setDataNascimento();
+        pessoa1.setNumeroCtps(14581482);
+
+        Pessoa pessoa2 = new Pessoa();
+        pessoa2.setNomeCompleto("Matheus Pereira");
+        pessoa2.setCpfCnpj("437.221.106-21");
+        //pessoa2.setDataNascimento();
+        pessoa2.setNumeroCtps(14999482);
+
+        Pessoa pessoa3 = new Pessoa();
+        pessoa3.setNomeCompleto("Pietro");
+        pessoa3.setCpfCnpj("740.355.811-01");
+        //pessoa1.setDataNascimento();
+        pessoa3.setNumeroCtps(14581182);
+
+        //Instância Pessoa 1
+        System.out.println("Nome Completo: " + pessoa1.getNomeCompleto());
+        System.out.println("CPF/CNPJ: " + pessoa1.getCpfCnpj());
+        System.out.println("Numero CTPs: "+ pessoa1.getNumeroCtps());
+
+        System.out.println("-------------------------------------------------");
+
+        //Instância Pessoa 2
+        System.out.println("Nome Completo: " + pessoa2.getNomeCompleto());
+        System.out.println("CPF/CNPJ: " + pessoa2.getCpfCnpj());
+        System.out.println("Numero CTPs: "+ pessoa2.getNumeroCtps());
+
+        System.out.println("-------------------------------------------------");
+
+        //Instância Pessoa 3
+        System.out.println("Nome Completo: " + pessoa3.getNomeCompleto());
+        System.out.println("CPF/CNPJ: " + pessoa3.getCpfCnpj());
+        System.out.println("Numero CTPs: "+ pessoa3.getNumeroCtps());
+    }
 
 }
+
+

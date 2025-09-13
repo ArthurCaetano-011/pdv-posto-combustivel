@@ -19,6 +19,10 @@ public class Pessoa{
         this.dataNascimento = dataNascimento;
         this.numeroCtps = numeroCtps;
     }
+    //construtor vazio
+    public Pessoa(){
+
+    }
 
     //getters
     public String getNomeCompleto(){ // Recebe o set e aplica
