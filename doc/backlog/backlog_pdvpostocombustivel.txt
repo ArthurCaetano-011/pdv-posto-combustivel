@@ -1,0 +1,68 @@
+    # Itens de Backlog
+
+    1 - Novo Produto: Funcionalidades que ainda existem no produto;
+    2 - Melhorrias: Alterações em recursos existentes para aprimorar a experiência de usuário;
+    3 - Bugs: Defeitos e falhas;
+    4 - Dívida Técnica: Trabalho necessário para refatorar o código;
+    5 - Mudanças de Design e Problemas de UX: Alterações necessárias para melhorar a aparência do produto;
+    6 - Aquisição de Conhecimento (Spikes) : Investigação ou protótipo para reduzir as incertezas sobre o produto;
+    7 - Solicitações de Clientes e Partes: Demandas vindas de usuários e outras pessoas envolvidas no projeto;
+
+    1.1 - Requisitos Não Funcionais:
+        1.1.1 - Descritivo Técnico:
+            # Backend desenvolvido em Java versão 15;
+            # Maven para gestão de dependência do projeto;
+            # Swing para interface com o usuário;
+            # Versionamento do projeto: Git/GitHub;
+
+
+    1.2 - Requisitos  Funcionais
+        1.2.1 - Cadastro de Funcionário:
+            # Pessoa
+                - CPF
+                - Nome
+                - Data de Nascimento
+                - Nº de CTPS
+
+            # Acesso
+                - Login
+                - Senha
+
+            # Contato
+                - Email
+                - Endereço
+                - Telefone
+
+        1.2.2 - Cadastro de Produtos:
+            # Produto
+                - Nome;
+                - Referência;
+                - Fornecedor;
+                - Marca;
+
+            # Preço
+                - Valor;
+                - DataHora;
+
+            # Estoque
+                - Quantidade;
+                - LocalTanque;
+                - LocalEndereço;
+                - LoteFuncionário;
+                - Validade;
+
+            # Percentual:(?)
+        1.2.3 - Gestão de Custos:
+            # Custos
+                - Imposto;
+                - CustosFixas;
+                - CustoManutenção;
+                - CustosOperacionais;
+                - CustosVariaveis;
+                - DataProcessamento;
+
+        1.2.4 - Gestão de Grupos:
+            # g
+
+
+
