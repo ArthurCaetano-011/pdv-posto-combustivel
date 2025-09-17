@@ -1,17 +1,16 @@
-package com.br.pdvpostocombustivel;
+package com.br.pdvpostocombustivel.enums;
 
 
 import com.br.pdvpostocombustivel.domain.entity.Pessoa;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class PdvpostocombustivelApplication {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(PdvpostocombustivelApplication.class, args);
+        //SpringApplication.run(PdvpostocombustivelApplication.class, args);
         Pessoa pessoa1 = new Pessoa();
-        pessoa1.setNomeCompleto("Júlio Cesar");
+        pessoa1.setNomeCompleto("Kaio Jorge");
         pessoa1.setCpfCnpj("151.343.881-99");
         //pessoa1.setDataNascimento();
         pessoa1.setNumeroCtps(14581482);
@@ -23,7 +22,7 @@ public class PdvpostocombustivelApplication {
         pessoa2.setNumeroCtps(14999482);
 
         Pessoa pessoa3 = new Pessoa();
-        pessoa3.setNomeCompleto("Pietro");
+        pessoa3.setNomeCompleto("Fabricio Bruno");
         pessoa3.setCpfCnpj("740.355.811-01");
         //pessoa1.setDataNascimento();
         pessoa3.setNumeroCtps(14581182);
