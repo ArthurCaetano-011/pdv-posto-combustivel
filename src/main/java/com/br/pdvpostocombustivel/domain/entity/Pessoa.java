@@ -1,8 +1,10 @@
 package com.br.pdvpostocombustivel.domain.entity; //Pacote que a classe vai receber
+import com.br.pdvpostocombustivel.enums.TipoPessoa;
 import jakarta.persistence.*;
 
 
 import java.time.LocalDate;
+import java.util.Timer;
 
 @Entity
 @Table(name = "pessoa")
@@ -14,28 +16,37 @@ public class Pessoa{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @Column(length = 200, nullable = false)//Limita a 200 caracteres o campo / Jamais permite que o campo esteja vazio
+    @Column(name = "nome_completo",length = 200, nullable = false)//Limita a 200 caracteres o campo / Jamais permite que o campo esteja vazio
     private String nomeCompleto;
 
-    @Column(length = 14, nullable = false)
+    @Column(name = "cpf_cnpj",length = 14, nullable = false)
     private  String cpfCnpj;
 
-    @Column(length = 10,nullable = false)
+    @Column(name = "data_nascimento",length = 10, nullable = false)
     private LocalDate dataNascimento;
 
-    @Column(length = 12)
-    private Integer numeroCtps;
+    @Column(name = "numero_ctps",length = 12)
+    private Long numeroCtps;
+
+    @Enumerated(EnumType.STRING) //Tipo enum
+    @Column(name = "tipo_pessoa", length = 15, nullable = false)
+    private TipoPessoa tipoPessoa;
 
     //construtor
-    public Pessoa (String nomeCompleto, String cpfCnpj, LocalDate dataNascimento, Integer numeroCtps){
+    public Pessoa (String nomeCompleto,
+                   String cpfCnpj,
+                   LocalDate dataNascimento,
+                   Long numeroCtps,
+                   TipoPessoa tipoPessoa){
         this.nomeCompleto = nomeCompleto;
         this.cpfCnpj = cpfCnpj;
-        this.dataNascimento = dataNascimento;
         this.numeroCtps = numeroCtps;
+        this.dataNascimento = dataNascimento;
+        this.tipoPessoa = tipoPessoa;
+
     }
     //construtor vazio
     public Pessoa(){
-
     }
 
     //getters
@@ -55,7 +66,7 @@ public class Pessoa{
         return dataNascimento;
     }
 
-    public Integer getNumeroCtps(){
+    public Long getNumeroCtps(){
         return numeroCtps;
     }
 
@@ -76,7 +87,7 @@ public class Pessoa{
         this.dataNascimento = dataNascimento;
     }
 
-    public void setNumeroCtps(Integer numeroCtps){
+    public void setNumeroCtps(Long numeroCtps){
         this.numeroCtps = numeroCtps;
     }
 }

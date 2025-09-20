@@ -1,4 +1,4 @@
-package com.br.pdvpostocombustivel.enums;
+package com.br.pdvpostocombustivel.util;
 
 
 import com.br.pdvpostocombustivel.domain.entity.Pessoa;
