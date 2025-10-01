@@ -1,0 +1,35 @@
+[33mcommit 1cacc3f9fd808fc9634a03ff90ad2b6c38e290d6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mMain[m[33m, [m[1;31morigin/Main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Usuario <aluno@gmail.com>
+Date:   Tue Sep 23 22:09:00 2025 -0300
+
+    Atualização de Controller, Organização e Inicio do Banco de Dados
+
+[33mcommit ece8f11ca3e9bc1435372bde0b7478755229902b[m
+Author: Usuario <aluno@gmail.com>
+Date:   Fri Sep 19 22:39:24 2025 -0300
+
+    Organizaca, Exception, Enums e inicio da Service
+
+[33mcommit 5238fa84cb1937b4422fd64d78d2678103a93b49[m
+Author: Usuario <aluno@gmail.com>
+Date:   Tue Sep 16 21:43:34 2025 -0300
+
+    Organização de Pastas, Request, Response, Alteraçcao no Pom, Properties
+
+[33mcommit b086167ce21ea923e04b68e28c400fa2a008d549[m
+Author: Usuario <aluno@gmail.com>
+Date:   Fri Sep 12 22:09:44 2025 -0300
+
+    Primeira Instancia
+
+[33mcommit e8cd807d769545aaad219e32d10c04c978d96192[m
+Author: Usuario <aluno@gmail.com>
+Date:   Fri Sep 12 21:28:33 2025 -0300
+
+    Âprimeiro commit
+
+[33mcommit 17922ebf9a15b20703370683bcae32244bc9c027[m
+Author: ArthurCaetano-011 <caetanoa671@gmail.com>
+Date:   Fri Sep 12 21:13:46 2025 -0300
+
+    Initial commit
