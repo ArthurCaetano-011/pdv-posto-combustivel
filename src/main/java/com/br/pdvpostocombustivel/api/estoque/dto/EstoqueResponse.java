@@ -1,6 +1,7 @@
 package com.br.pdvpostocombustivel.api.estoque.dto;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 //Para Entrada
 public record EstoqueResponse(
@@ -8,6 +9,6 @@ public record EstoqueResponse(
         String localTanque,
         String localEndereco,
         String loteFabricacao,
-        String dataValidade
+        Date dataValidade
 ) {
 }

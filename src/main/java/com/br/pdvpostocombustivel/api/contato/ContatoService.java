@@ -29,24 +29,24 @@ public class ContatoService {
         // READ by ID - validar a utilização desse método
         @Transactional(readOnly = true)
         public ContatoResponse getById(Long id) {
-            Contato p = repository.findById(id)
+            Contato c = repository.findById(id)
                     .orElseThrow(() -> new IllegalArgumentException("Contato não encontrado. id =" + id));
-            return toResponse(p);
+            return toResponse(c);
         }
 
         // READ by Email
         @Transactional(readOnly = true)
         public ContatoResponse getByEmail(String email) {
-            Contato p = repository.findByEmail(email)
+            Contato c = repository.findByEmail(email)
                     .orElseThrow(() -> new IllegalArgumentException("Contato não encontrado. e-mail =" + email));
-            return toResponse(p);
+            return toResponse(c);
         }
         // READ by Telefone
         @Transactional(readOnly = true)
         public ContatoResponse getByTelefone(String telefone) {
-        Contato p = repository.findByTelefone(telefone)
+        Contato c = repository.findByTelefone(telefone)
                 .orElseThrow(() -> new IllegalArgumentException("Contato não encontrado. telefone =" + telefone));
-        return toResponse(p);
+        return toResponse(c);
         }
 
         // LIST paginado
@@ -58,37 +58,37 @@ public class ContatoService {
 
         // UPDATE  - substitui todos os campos
         public ContatoResponse update(Long id, ContatoRequest req) {
-            Contato p = repository.findById(id)
+            Contato c = repository.findById(id)
                     .orElseThrow(() -> new IllegalArgumentException("Contato não encontrado. id =" + id));
 
-            if (req.email() != null && !req.email().equals(p.getEmail())) {
+            if (req.email() != null && !req.email().equals(c.getEmail())) {
                 validarUnicidadeEmail(req.email(), id);
             }
-            if (req.telefone() != null && !req.telefone().equals(p.getTelefone())) {
+            if (req.telefone() != null && !req.telefone().equals(c.getTelefone())) {
                 validarUnicidadeTelefone(req.telefone(), id);
             }
 
-            p.setTelefone(req.telefone());
-            p.setEmail(req.email());
-            p.setEndereco(req.endereco());
+            c.setTelefone(req.telefone());
+            c.setEmail(req.email());
+            c.setEndereco(req.endereco());
 
-            return toResponse(repository.save(p));
+            return toResponse(repository.save(c));
         }
 
         // PATCH - atualiza apenas campos não nulos
         public ContatoResponse patch(Long id, ContatoRequest req) {
-            Contato p = repository.findById(id)
+            Contato c = repository.findById(id)
                     .orElseThrow(() -> new IllegalArgumentException("Contato não encontrado. id =" + id));
 
-            if (req.endereco() != null)  p.setEndereco(req.endereco());
+            if (req.endereco() != null)  c.setEndereco(req.endereco());
             if (req.email() != null) {
-                if (!req.email().equals(p.getEmail())) {
+                if (!req.email().equals(c.getEmail())) {
                     validarUnicidadeEmail(req.email(), id);
                 }
-                p.setEmail(req.email());
+                c.setEmail(req.email());
             }
 
-            return toResponse(repository.save(p));
+            return toResponse(repository.save(c));
         }
 
         // DELETE
@@ -125,11 +125,11 @@ public class ContatoService {
             );
         }
 
-        private ContatoResponse toResponse(Contato p) {
+        private ContatoResponse toResponse(Contato c) {
             return new ContatoResponse(
-                    p.getTelefone(),
-                    p.getEmail(),
-                    p.getEndereco()
+                    c.getTelefone(),
+                    c.getEmail(),
+                    c.getEndereco()
             );
         }
 }

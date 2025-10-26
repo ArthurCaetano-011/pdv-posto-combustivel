@@ -1,6 +1,7 @@
 package com.br.pdvpostocombustivel.domain.entity;
 
 import com.br.pdvpostocombustivel.enums.TipoCombustivel;
+import com.br.pdvpostocombustivel.enums.TipoEstoque;
 import com.br.pdvpostocombustivel.enums.TipoLubrificante;
 import com.br.pdvpostocombustivel.enums.TipoProduto;
 import jakarta.persistence.*;
@@ -27,15 +28,25 @@ public class Produto {
     @Column(length = 15,nullable = false)
     private String marca;
 
-    
+    @Column(length = 30, nullable = false)
+    private String categoria;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_estoque",length = 30,nullable = false)
+    private TipoProduto tipoProduto;
+
+
     protected Produto() {}
 
     //construtor
-    public  Produto(String nome, String referencia, String fornecedor, String marca){
+    public  Produto(String nome, String referencia, String fornecedor, String marca, String categoria, TipoProduto tipoProduto){
         this.nome = nome;
         this.referencia = referencia;
         this.fornecedor = fornecedor;
         this.marca = marca;
+        this.categoria = categoria;
+        this.tipoProduto = tipoProduto;
     }
 
     //getters
@@ -50,6 +61,12 @@ public class Produto {
     }
     public String getMarca(){
         return marca;
+    }
+    public String getCategoria(){
+        return  categoria;
+    }
+    public TipoProduto getTipoProduto(){
+        return tipoProduto;
     }
     public Long getId(){
         return id;
@@ -68,6 +85,12 @@ public class Produto {
     }
     public void setMarca(String marca){
         this.marca = marca;
+    }
+    public void setCategoria(String categoria){
+        this.categoria = categoria;
+    }
+    public void setTipoProduto(TipoProduto tipoProduto){
+        this.tipoProduto = tipoProduto;
     }
     public void setId(Long id){
         this.id = id;

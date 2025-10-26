@@ -10,6 +10,7 @@ public record ProdutoRequest(
         String referencia,
         String fornecedor,
         String marca,
+        String categoria,
         TipoProduto tipoProduto,
         TipoCombustivel tipoCombustivel,
         TipoLubrificante tipoLubrificante

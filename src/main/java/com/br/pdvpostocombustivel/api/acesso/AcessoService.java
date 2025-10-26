@@ -32,17 +32,17 @@ public class AcessoService {
     // READ by ID - validar a utilização desse método
     @Transactional(readOnly = true)
     public AcessoResponse getById(Long id) {
-        Acesso p = repository.findById(id)
+        Acesso a = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Acesso não encontrado. id=" + id));
-        return toResponse(p);
+        return toResponse(a);
     }
 
     // READ by Usuario
     @Transactional(readOnly = true)
     public AcessoResponse getByUsuario(String usuario) {
-        Acesso p = repository.findByUsuario(usuario)
+        Acesso a = repository.findByUsuario(usuario)
                 .orElseThrow(() -> new IllegalArgumentException("Acesso não encontrado. usuario=" + usuario));
-        return toResponse(p);
+        return toResponse(a);
     }
 
     // LIST paginado
@@ -54,33 +54,33 @@ public class AcessoService {
 
     // UPDATE  - substitui todos os campos
     public AcessoResponse update(Long id, AcessoRequest req) {
-        Acesso p = repository.findById(id)
+        Acesso a = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Acesso não encontrado. id=" + id));
 
-        if (req.usuario() != null && !req.usuario().equals(p.getUsuario())) {
+        if (req.usuario() != null && !req.usuario().equals(a.getUsuario())) {
             validarUnicidadeUsuario(req.usuario(), id);
         }
 
-        p.setSenha(req.senha());
-        p.setUsuario(req.usuario());
+        a.setSenha(req.senha());
+        a.setUsuario(req.usuario());
 
-        return toResponse(repository.save(p));
+        return toResponse(repository.save(a));
     }
 
     // PATCH - atualiza apenas campos não nulos
     public AcessoResponse patch(Long id, AcessoRequest req) {
-        Acesso p = repository.findById(id)
+        Acesso a = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Acesso não encontrado. id=" + id));
 
-        if (req.senha() != null)  p.setSenha(req.senha());
+        if (req.senha() != null)  a.setSenha(req.senha());
         if (req.usuario() != null) {
-            if (!req.usuario().equals(p.getUsuario())) {
+            if (!req.usuario().equals(a.getUsuario())) {
                 validarUnicidadeUsuario(req.usuario(), id);
             }
-            p.setUsuario(req.usuario());
+            a.setUsuario(req.usuario());
         }
 
-        return toResponse(repository.save(p));
+        return toResponse(repository.save(a));
     }
 
     // DELETE
@@ -108,10 +108,10 @@ public class AcessoService {
         );
     }
 
-    private AcessoResponse toResponse(Acesso p) {
+    private AcessoResponse toResponse(Acesso a) {
         return new AcessoResponse(
-                p.getUsuario(),
-                p.getSenha()
+                a.getUsuario(),
+                a.getSenha()
         );
     }
 }

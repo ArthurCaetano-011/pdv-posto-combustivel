@@ -8,8 +8,8 @@ import java.util.Date;
 //Para resposta
 public record PrecoResponse(
         BigDecimal valor,
-        TipoPreco tipoPreco,
         Date dataAlteracao,
         Date horaAlteracao
+
 ) {
 }

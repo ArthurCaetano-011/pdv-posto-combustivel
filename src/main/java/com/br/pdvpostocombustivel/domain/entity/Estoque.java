@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@Table(name = "estoque")
+@Table(name = "estoques")
 public class Estoque {
 
     @Id
@@ -40,12 +40,13 @@ public class Estoque {
     protected Estoque() {}
 
     //construtor
-    public Estoque(BigDecimal quantidade, String localTanque, String localEndereco, String loteFabricacao, Date dataValidade){
+    public Estoque(BigDecimal quantidade, String localTanque, String localEndereco, String loteFabricacao, Date dataValidade, TipoEstoque tipoEstoque){
         this.quantidade = quantidade;
         this.localTanque = localTanque;
         this.localEndereco = localEndereco;
         this.loteFabricacao = loteFabricacao;
         this.dataValidade = dataValidade;
+        this.tipoEstoque = tipoEstoque;
     }
 
     //getters
@@ -64,6 +65,9 @@ public class Estoque {
     public Date getDataValidade(){
         return dataValidade;
     }
+    public TipoEstoque getTipoEstoque(){
+        return tipoEstoque;
+    }
     public Long getId(){
         return id;
     }
@@ -78,15 +82,16 @@ public class Estoque {
     public void setId(Long id){
         this.id = id;
     }
-
     public void setLocalEndereco(String localEndereco) {
         this.localEndereco = localEndereco;
     }
-
     public void setLoteFabricacao(String loteFabricacao) {
         this.loteFabricacao = loteFabricacao;
     }
     public void setDataValidade(Date dataValidade){
         this.dataValidade = dataValidade;
+    }
+    public void setTipoEstoque(TipoEstoque tipoEstoque){
+        this.tipoEstoque = tipoEstoque;
     }
 }

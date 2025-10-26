@@ -25,6 +25,9 @@ public class Custo {
     private double frete;
 
     @Column(length = 8,nullable = false)
+    private double seguro;
+
+    @Column(length = 8,nullable = false)
     private double custoVariavel;
 
     @Column(length = 10,nullable = false)
@@ -44,9 +47,10 @@ public class Custo {
     protected Custo() {}
 
     //construtor
-    public Custo(double imposto, double frete, double custoVariavel, double custoFixo, double margemLucro, LocalDate dataProcessamento, TipoCusto tipoCusto){
+    public Custo(double imposto, double frete, double seguro, double custoVariavel, double custoFixo, double margemLucro, LocalDate dataProcessamento, TipoCusto tipoCusto){
         this.imposto = imposto;
         this.frete = frete;
+        this.seguro = seguro;
         this.custoVariavel = custoVariavel;
         this.custoFixo = custoFixo;
         this.margemLucro = margemLucro;
@@ -60,6 +64,9 @@ public class Custo {
     }
     public double getFrete(){
         return frete;
+    }
+    public double getSeguro() {
+        return seguro;
     }
     public double getCustoVariavel(){
         return custoVariavel;
@@ -86,6 +93,9 @@ public class Custo {
     }
     public void setFrete(double frete) {
         this.frete = frete;
+    }
+    public void setSeguro(double seguro){
+        this.seguro = seguro;
     }
     public void setCustoVariavel(double custoVariavel) {
         this.custoVariavel = custoVariavel;

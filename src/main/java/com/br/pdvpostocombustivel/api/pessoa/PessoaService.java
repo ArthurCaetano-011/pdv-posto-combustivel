@@ -52,8 +52,8 @@ public class PessoaService {
         return repository.findAll(pageable).map(this::toResponse);
     }
 
-    // UPDATE  - substitui todos os campos
-    public PessoaResponse update(Long id, PessoaRequest req) {
+    // UPDATE - substitui todos os campos
+     public PessoaResponse update(Long id, PessoaRequest req) {
         Pessoa p = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Pessoa não encontrada. id=" + id));
 
