@@ -1,13 +1,15 @@
 package com.br.pdvpostocombustivel.domain.entity;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.br.pdvpostocombustivel.enums.TipoEstoque;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Entity
+@Table(name = "estoque")
 public class Estoque {
 
     @Id
@@ -15,11 +17,25 @@ public class Estoque {
     private Long id;
 
     //atributos
+    @Column(length = 10,nullable = false)
     private BigDecimal quantidade;
+
+    @Column(length = 50, nullable = false)
     private String localTanque;
+
+    @Column(length = 100,nullable = false)
     private String localEndereco;
+
+    @Column(length = 10,nullable = false)
     private String loteFabricacao;
+
+    @Column(length = 10,nullable = false)
     private Date dataValidade;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_estoque",length = 30,nullable = false)
+    private TipoEstoque tipoEstoque;
 
     protected Estoque() {}
 

@@ -1,12 +1,15 @@
 package com.br.pdvpostocombustivel.domain.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.br.pdvpostocombustivel.enums.TipoEstoque;
+import com.br.pdvpostocombustivel.enums.TipoPreco;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "precos")
 public class Preco {
 
     @Id
@@ -14,17 +17,29 @@ public class Preco {
     private Long id;
 
     //atributos
+    @Column(length = 8,nullable = false)
     private BigDecimal valor;
+
+    @Column(length = 10,nullable = false)
     private Date dataAlteracao;
+
+    @Column(length = 10, nullable = false)
     private Date horaAlteracao;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_preco",length = 30,nullable = false)
+    private TipoPreco tipoPreco;
+
 
     protected Preco() {}
 
     //construtor
-    public Preco(BigDecimal valor, Date dataAlteracao, Date horaAlteracao) {
+    public Preco(BigDecimal valor, Date dataAlteracao, Date horaAlteracao,TipoPreco tipoPreco) {
         this.valor = valor;
         this.dataAlteracao = dataAlteracao;
         this.horaAlteracao = horaAlteracao;
+        this.tipoPreco = tipoPreco;
     }
 
     //getters
@@ -40,6 +55,9 @@ public class Preco {
     public Long getId(){
         return id;
     }
+    public TipoPreco getTipoPreco(){
+        return tipoPreco;
+    }
 
     //setters
     public void setValor (BigDecimal valor){
@@ -53,5 +71,8 @@ public class Preco {
     }
     public void setId(Long id){
         this.id = id;
+    }
+    public void setTipoPreco(TipoPreco tipoPreco){
+        this.tipoPreco = tipoPreco;
     }
 }

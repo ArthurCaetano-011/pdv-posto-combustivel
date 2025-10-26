@@ -1,10 +1,12 @@
 package com.br.pdvpostocombustivel.domain.entity;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import com.br.pdvpostocombustivel.enums.TipoContato;
+import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+@Entity
+@Table(name = "contatos")
 public class Contato {
 
     @Id
@@ -12,17 +14,28 @@ public class Contato {
     private Long id;
 
     //atributos
+    @Column(length = 14, nullable = false)
     private String telefone;
+
+    @Column(length = 50,nullable = false)
     private String email;
+
+    @Column(length = 100, nullable = false)
     private String endereco;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_contato",nullable = false, length = 30)
+    private TipoContato tipoContato;
 
     protected Contato() {}
 
     //construtor
-    public Contato(String telefone, String email, String endereco){
+    public Contato(String telefone, String email, String endereco,TipoContato tipoContato){
     this.telefone = telefone;
     this.email = email;
     this.endereco = endereco;
+    this.tipoContato = tipoContato;
     }
 
     //getters
@@ -34,6 +47,9 @@ public class Contato {
     }
     public Long getId(){
         return id;
+    }
+    public TipoContato getTipoContato(){
+        return tipoContato;
     }
 
     public String getEndereco() {
@@ -52,5 +68,8 @@ public class Contato {
     }
     public void setId(Long id){
         this.id = id;
+    }
+    public void setTipoContato(TipoContato tipoContato){
+        this.tipoContato = tipoContato;
     }
 }

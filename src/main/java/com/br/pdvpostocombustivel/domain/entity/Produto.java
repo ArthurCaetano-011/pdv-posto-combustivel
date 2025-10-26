@@ -1,9 +1,13 @@
 package com.br.pdvpostocombustivel.domain.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.br.pdvpostocombustivel.enums.TipoCombustivel;
+import com.br.pdvpostocombustivel.enums.TipoLubrificante;
+import com.br.pdvpostocombustivel.enums.TipoProduto;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
+@Entity
+@Table(name = "produtos")
 public class Produto {
 
     @Id
@@ -11,11 +15,19 @@ public class Produto {
     private Long id;
 
     //atributos
+    @Column(length = 15,nullable = false)
     private String nome;
+
+    @Column(length = 15,nullable = false)
     private String referencia;
+
+    @Column(length = 20, nullable = false)
     private String fornecedor;
+
+    @Column(length = 15,nullable = false)
     private String marca;
 
+    
     protected Produto() {}
 
     //construtor

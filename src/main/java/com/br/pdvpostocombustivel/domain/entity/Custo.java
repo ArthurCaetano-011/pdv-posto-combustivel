@@ -1,9 +1,15 @@
 package com.br.pdvpostocombustivel.domain.entity;
 
 
+import com.br.pdvpostocombustivel.enums.TipoCusto;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "custos")
 
 public class Custo {
 
@@ -12,23 +18,40 @@ public class Custo {
     private Long id;
 
     //atributos
+    @Column(length = 8,nullable = false)
     private double imposto;
+
+    @Column(length = 8, nullable = false)
     private double frete;
-    private double seguro;
+
+    @Column(length = 8,nullable = false)
     private double custoVariavel;
+
+    @Column(length = 10,nullable = false)
     private double custoFixo;
+
+    @Column(length = 10,nullable = false)
     private double margemLucro;
+
+    @Column(length = 10, nullable = false)
+    private LocalDate dataProcessamento;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_custo", length = 30, nullable = false)
+    private TipoCusto tipoCusto;
 
     protected Custo() {}
 
     //construtor
-    public Custo(double imposto, double frete, double seguro, double custoVariavel, double custoFixo, double margemLucro){
+    public Custo(double imposto, double frete, double custoVariavel, double custoFixo, double margemLucro, LocalDate dataProcessamento, TipoCusto tipoCusto){
         this.imposto = imposto;
         this.frete = frete;
-        this.seguro = seguro;
         this.custoVariavel = custoVariavel;
         this.custoFixo = custoFixo;
         this.margemLucro = margemLucro;
+        this.dataProcessamento = dataProcessamento;
+        this.tipoCusto = tipoCusto;
     }
 
     //getters
@@ -37,9 +60,6 @@ public class Custo {
     }
     public double getFrete(){
         return frete;
-    }
-    public double getSeguro(){
-        return seguro;
     }
     public double getCustoVariavel(){
         return custoVariavel;
@@ -50,20 +70,22 @@ public class Custo {
     public double getMargemLucro(){
         return margemLucro;
     }
+    public LocalDate getDataProcessamento(){
+        return dataProcessamento;
+    }
     public Long getId(){
         return id;
     }
+    public TipoCusto getTipoCusto(){
+        return tipoCusto;
+    }
 
     //setters
-    public void setImposto (Double imposto){
+    public void setImposto (double imposto){
         this.imposto = imposto;
     }
-
     public void setFrete(double frete) {
         this.frete = frete;
-    }
-    public void setSeguro(double seguro) {
-        this.seguro = seguro;
     }
     public void setCustoVariavel(double custoVariavel) {
         this.custoVariavel = custoVariavel;
@@ -74,7 +96,13 @@ public class Custo {
     public void setMargemLucro(double margemLucro) {
         this.margemLucro = margemLucro;
     }
+    public void setDataProcessamento(LocalDate dataProcessamento) {
+        this.dataProcessamento = dataProcessamento;
+    }
     public void setId(Long id){
         this.id = id;
+    }
+    public void setTipoCusto (TipoCusto tipoCusto){
+        this.tipoCusto = tipoCusto;
     }
 }
