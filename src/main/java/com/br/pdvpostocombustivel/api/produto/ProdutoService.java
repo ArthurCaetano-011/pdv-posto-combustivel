@@ -66,6 +66,7 @@ public class ProdutoService {
         p.setFornecedor(req.fornecedor());
         p.setMarca(req.marca());
         p.setCategoria(req.categoria());
+        p.setTipoProduto(req.tipoProduto());
 
         return toResponse(repository.save(p));
     }
@@ -85,6 +86,7 @@ public class ProdutoService {
         if (req.fornecedor() != null) p.setFornecedor(req.fornecedor());
         if (req.marca() != null) p.setMarca(req.marca());
         if (req.categoria() != null) p.setCategoria(req.categoria());
+        if (req.tipoProduto() != null) p.setTipoProduto(req.tipoProduto());
 
         return toResponse(repository.save(p));
     }
@@ -123,7 +125,8 @@ public class ProdutoService {
                 p.getReferencia(),
                 p.getFornecedor(),
                 p.getMarca(),
-                p.getCategoria()
+                p.getCategoria(),
+                p.getTipoProduto()
         );
     }
 }

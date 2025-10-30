@@ -2,7 +2,6 @@ package com.br.pdvpostocombustivel.api.contato;
 
 import com.br.pdvpostocombustivel.api.contato.dto.ContatoRequest;
 import com.br.pdvpostocombustivel.api.contato.dto.ContatoResponse;
-import com.br.pdvpostocombustivel.domain.entity.Contato;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -11,16 +10,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/contatos")
 public class ContatoController {
-
     private final ContatoService service;
 
-    public ContatoController (ContatoService service){
+    public ContatoController(ContatoService service) {
         this.service = service;
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ContatoResponse create(@RequestBody ContatoRequest req){
+    public ContatoResponse create(@RequestBody ContatoRequest req) {
         return service.create(req);
     }
 
@@ -36,9 +34,9 @@ public class ContatoController {
 
     @GetMapping
     public Page<ContatoResponse> list(@RequestParam(defaultValue = "0") int page,
-                                     @RequestParam(defaultValue = "10") int size,
-                                     @RequestParam(defaultValue = "id") String sortBy,
-                                     @RequestParam(defaultValue = "ASC") Sort.Direction dir) {
+                                      @RequestParam(defaultValue = "10") int size,
+                                      @RequestParam(defaultValue = "id") String sortBy,
+                                      @RequestParam(defaultValue = "ASC") Sort.Direction dir) {
         return service.list(page, size, sortBy, dir);
     }
 
@@ -58,4 +56,3 @@ public class ContatoController {
         service.delete(id);
     }
 }
-

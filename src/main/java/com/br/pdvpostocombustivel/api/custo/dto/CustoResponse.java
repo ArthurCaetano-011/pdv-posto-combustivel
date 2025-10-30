@@ -1,15 +1,18 @@
 package com.br.pdvpostocombustivel.api.custo.dto;
 
+import com.br.pdvpostocombustivel.enums.TipoCusto;
+
 import java.time.LocalDate;
 
 //Para resposta
 public record CustoResponse(
-        double imposto,
-        double frete,
-        double seguro,
-        double custoVariavel,
-        double custoFixo,
-        double margemLucro,
-        LocalDate dataProcessamento
+        Double imposto,
+        Double frete,
+        Double seguro,
+        Double custoVariavel,
+        Double custoFixo,
+        Double margemLucro,
+        LocalDate dataProcessamento,
+        TipoCusto tipoCusto
 ) {
 }

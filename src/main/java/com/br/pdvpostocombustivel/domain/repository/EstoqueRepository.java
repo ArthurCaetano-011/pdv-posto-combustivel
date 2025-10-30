@@ -3,6 +3,7 @@ package com.br.pdvpostocombustivel.domain.repository;
 import com.br.pdvpostocombustivel.domain.entity.Estoque;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Date;
 import java.util.Optional;
 
 public interface EstoqueRepository extends JpaRepository <Estoque, Long> {
@@ -11,11 +12,11 @@ public interface EstoqueRepository extends JpaRepository <Estoque, Long> {
 
     Optional<Estoque> findByLocalEndereco(String localEndereco);
 
-    Optional<Estoque> findByDataValidade(String dataValidade);
+    Optional<Estoque> findByDataValidade(Date dataValidade);
 
     boolean existsByLoteFabricacao(String loteFabricacao);
 
-    boolean existsByLocalEdereco(String localEndereco);
+    boolean existsByLocalEndereco(String localEndereco);
 
-    boolean existsByDataValidade(String dataValidade);
+    boolean existsByDataValidade(Date dataValidade);
 }

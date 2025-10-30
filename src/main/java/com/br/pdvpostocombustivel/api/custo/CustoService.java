@@ -42,7 +42,7 @@ public class CustoService {
     // READ by Data de Processamento
     @Transactional(readOnly = true)
     public CustoResponse getByDataProcessamento(LocalDate dataProcessamento) {
-        Custo c = repository.findsByDataProcessamento(dataProcessamento)
+        Custo c = repository.findByDataProcessamento(dataProcessamento)
                 .orElseThrow(() -> new IllegalArgumentException("Custo não encontrado para a data de processamento: " + dataProcessamento));
         return toResponse(c);
     }
@@ -64,6 +64,8 @@ public class CustoService {
         }
 
         c.setImposto(req.imposto());
+        c.setFrete(req.frete());
+        c.setSeguro(req.seguro());
         c.setCustoVariavel(req.custoVariavel());
         c.setCustoFixo(req.custoFixo());
         c.setMargemLucro(req.margemLucro());
@@ -78,10 +80,12 @@ public class CustoService {
         Custo c = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Custo não encontrado. id=" + id));
 
-        if (req.imposto() != 0) c.setImposto(req.imposto());
-        if (req.custoVariavel() != 0) c.setCustoVariavel(req.custoVariavel());
-        if (req.custoFixo() != 0) c.setCustoFixo(req.custoFixo());
-        if (req.margemLucro() != 0) c.setMargemLucro(req.margemLucro());
+        if (req.imposto() != null) c.setImposto(req.imposto());
+        if (req.frete() != null) c.setFrete(req.frete());
+        if (req.seguro() != null) c.setSeguro(req.seguro());
+        if (req.custoVariavel() != null) c.setCustoVariavel(req.custoVariavel());
+        if (req.custoFixo() != null) c.setCustoFixo(req.custoFixo());
+        if (req.margemLucro() != null) c.setMargemLucro(req.margemLucro());
         if (req.dataProcessamento() != null) {
             if (!req.dataProcessamento().equals(c.getDataProcessamento())) {
                 validarUnicidadeDataProcessamento(req.dataProcessamento(), id);
@@ -103,7 +107,7 @@ public class CustoService {
 
     // ---------- Helpers ----------
     private void validarUnicidadeDataProcessamento(LocalDate dataProcessamento, Long idAtual) {
-        repository.findsByDataProcessamento(dataProcessamento).ifPresent(existente -> {
+        repository.findByDataProcessamento(dataProcessamento).ifPresent(existente -> {
             if (idAtual == null || !existente.getId().equals(idAtual)) {
                 throw new DataIntegrityViolationException("Já existe um custo cadastrado para a data: " + dataProcessamento);
             }
@@ -131,7 +135,8 @@ public class CustoService {
                 c.getCustoVariavel(),
                 c.getCustoFixo(),
                 c.getMargemLucro(),
-                c.getDataProcessamento()
+                c.getDataProcessamento(),
+                c.getTipoCusto()
         );
     }
 }

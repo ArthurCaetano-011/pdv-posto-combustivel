@@ -63,6 +63,7 @@ public class AcessoService {
 
         a.setSenha(req.senha());
         a.setUsuario(req.usuario());
+        a.setTipoAcesso(req.tipoAcesso());
 
         return toResponse(repository.save(a));
     }
@@ -79,6 +80,7 @@ public class AcessoService {
             }
             a.setUsuario(req.usuario());
         }
+        if (req.tipoAcesso() != null) a.setTipoAcesso(req.tipoAcesso());
 
         return toResponse(repository.save(a));
     }
@@ -111,7 +113,8 @@ public class AcessoService {
     private AcessoResponse toResponse(Acesso a) {
         return new AcessoResponse(
                 a.getUsuario(),
-                a.getSenha()
+                a.getSenha(),
+                a.getTipoAcesso()
         );
     }
 }

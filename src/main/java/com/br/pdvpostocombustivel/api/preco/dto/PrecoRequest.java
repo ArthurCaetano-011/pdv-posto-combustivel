@@ -6,6 +6,7 @@ import com.br.pdvpostocombustivel.enums.TipoPreco;
 import java.math.BigDecimal;
 import java.util.Date;
 
+
 //Para entrada
 public record PrecoRequest(
      BigDecimal valor,

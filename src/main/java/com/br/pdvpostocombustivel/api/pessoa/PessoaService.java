@@ -65,6 +65,7 @@ public class PessoaService {
         p.setCpfCnpj(req.cpfCnpj());
         p.setNumeroCtps(req.numeroCtps());
         p.setDataNascimento(req.dataNascimento());
+        p.setTipoPessoa(req.tipoPessoa());
 
         return toResponse(repository.save(p));
     }
@@ -83,6 +84,7 @@ public class PessoaService {
         }
         if (req.numeroCtps() != null)    p.setNumeroCtps(req.numeroCtps());
         if (req.dataNascimento() != null) p.setDataNascimento(req.dataNascimento());
+        if (req.tipoPessoa() != null) p.setTipoPessoa(req.tipoPessoa());
 
         return toResponse(repository.save(p));
     }
@@ -119,7 +121,8 @@ public class PessoaService {
                 p.getNomeCompleto(),
                 p.getCpfCnpj(),
                 p.getNumeroCtps(),
-                p.getDataNascimento()
+                p.getDataNascimento(),
+                p.getTipoPessoa()
         );
     }
 }

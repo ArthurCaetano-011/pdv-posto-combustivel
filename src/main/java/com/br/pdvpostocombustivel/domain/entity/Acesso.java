@@ -16,12 +16,12 @@ public class Acesso {
     @Column(length = 30, nullable = false)
     private String usuario;
 
-    @Column(length = 10,nullable = false)
+    @Column(length = 10, nullable = false)
     private String senha;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_acesso",nullable = false,length = 30)
+    @Column(name = "tipo_acesso", nullable = false,length = 30)
     private TipoAcesso tipoAcesso;
 
     protected Acesso() {}

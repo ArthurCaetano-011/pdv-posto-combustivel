@@ -8,9 +8,9 @@ import java.util.Optional;
 
 public interface CustoRepository extends JpaRepository  <Custo, Long> {
 
-    Optional<Custo>findsByMargemLucro(double margemLucro);
-    Optional<Custo>findsByDataProcessamento(LocalDate dataProcessamento);
+    Optional<Custo>findByMargemLucro(double margemLucro);
+    Optional<Custo>findByDataProcessamento(LocalDate dataProcessamento);
 
     boolean existsByMargemLucro(double margemLucro);
-    boolean existByDataProcessamento(LocalDate dataProcessamento);
+    boolean existsByDataProcessamento(LocalDate dataProcessamento);
 }

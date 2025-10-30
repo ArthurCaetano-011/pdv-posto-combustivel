@@ -6,12 +6,12 @@ import java.time.LocalDate;
 
 //Para entrada
 public record CustoRequest(
-        double imposto,
-        double frete,
-        double seguro,
-        double custoVariavel,
-        double custoFixo,
-        double margemLucro,
+        Double imposto,
+        Double frete,
+        Double seguro,
+        Double custoVariavel,
+        Double custoFixo,
+        Double margemLucro,
         LocalDate dataProcessamento,
         TipoCusto tipoCusto
 ) {

@@ -22,6 +22,7 @@ public class EstoqueService {
 
     // CREATE
     public EstoqueResponse create(EstoqueRequest req) {
+        validarUnicidadeLoteFabricacao(req.loteFabricacao(), null);
         Estoque novaEstoque = toEntity(req);
         return toResponse(repository.save(novaEstoque));
     }
@@ -51,7 +52,7 @@ public class EstoqueService {
 
     public EstoqueResponse update(Long id, EstoqueRequest req){
         Estoque e = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Pessoa não encontrada. id=" + id));
+                .orElseThrow(() -> new IllegalArgumentException("Estoque não encontrado. id=" + id));
 
         if (req.loteFabricacao() != null && !req.loteFabricacao().equals(e.getLoteFabricacao()) ){
             validarUnicidadeLoteFabricacao(req.loteFabricacao(), id);
@@ -62,6 +63,7 @@ public class EstoqueService {
         e.setLocalEndereco(req.localEndereco());
         e.setLoteFabricacao(req.loteFabricacao());
         e.setDataValidade(req.dataValidade());
+        e.setTipoEstoque(req.tipoEstoque());
 
         return toResponse(repository.save(e));
     }
@@ -81,6 +83,7 @@ public class EstoqueService {
             e.setLoteFabricacao(req.loteFabricacao());
         }
         if(req.dataValidade() != null) e.setDataValidade(req.dataValidade());
+        if(req.tipoEstoque() != null) e.setTipoEstoque(req.tipoEstoque());
 
         return toResponse(repository.save(e));
     }
@@ -119,7 +122,8 @@ public class EstoqueService {
                 e.getLocalTanque(),
                 e.getLocalEndereco(),
                 e.getLoteFabricacao(),
-                e.getDataValidade()
+                e.getDataValidade(),
+                e.getTipoEstoque()
         );
     }
 }

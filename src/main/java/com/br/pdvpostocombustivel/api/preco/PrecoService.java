@@ -50,7 +50,8 @@ public class PrecoService {
 
         p.setValor(req.valor());
         p.setDataAlteracao(req.dataAlteracao());
-        p.setHoraAlteracao(req.horaAlteracao()); // O campo na entidade é LocalDate, o que é semanticamente incorreto para hora.
+        p.setHoraAlteracao(req.horaAlteracao());
+        p.setTipoPreco(req.tipoPreco());
 
         return toResponse(repository.save(p));
     }
@@ -63,6 +64,7 @@ public class PrecoService {
         if (req.valor() != null) p.setValor(req.valor());
         if (req.dataAlteracao() != null) p.setDataAlteracao(req.dataAlteracao());
         if (req.horaAlteracao() != null) p.setHoraAlteracao(req.horaAlteracao());
+        if (req.tipoPreco() != null) p.setTipoPreco(req.tipoPreco());
 
         return toResponse(repository.save(p));
     }
@@ -88,7 +90,8 @@ public class PrecoService {
         return new PrecoResponse(
                 p.getValor(),
                 p.getDataAlteracao(),
-                p.getHoraAlteracao()
+                p.getHoraAlteracao(),
+                p.getTipoPreco()
         );
     }
 }

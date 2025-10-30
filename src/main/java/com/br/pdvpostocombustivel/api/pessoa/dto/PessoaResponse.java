@@ -9,5 +9,6 @@ public record PessoaResponse(
         String nomeCompleto,
         String cpfCnpj,
         Long numeroCtps,
-        LocalDate dataNascimento
+        LocalDate dataNascimento,
+        TipoPessoa tipoPessoa
 ){}

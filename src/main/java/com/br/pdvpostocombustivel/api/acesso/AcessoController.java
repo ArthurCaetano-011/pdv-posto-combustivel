@@ -23,7 +23,7 @@ public class AcessoController {
         return service.create(req);
     }
 
-    @GetMapping(params = "/{id}")
+    @GetMapping("/{id}")
     public AcessoResponse get(@PathVariable Long id){
         return service.getById(id);
     }
