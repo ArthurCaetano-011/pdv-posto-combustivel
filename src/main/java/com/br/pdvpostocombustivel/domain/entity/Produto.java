@@ -1,8 +1,5 @@
 package com.br.pdvpostocombustivel.domain.entity;
 
-import com.br.pdvpostocombustivel.enums.TipoCombustivel;
-import com.br.pdvpostocombustivel.enums.TipoEstoque;
-import com.br.pdvpostocombustivel.enums.TipoLubrificante;
 import com.br.pdvpostocombustivel.enums.TipoProduto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
