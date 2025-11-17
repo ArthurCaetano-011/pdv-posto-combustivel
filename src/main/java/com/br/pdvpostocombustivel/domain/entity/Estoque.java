@@ -1,13 +1,12 @@
 package com.br.pdvpostocombustivel.domain.entity;
 
-
 import com.br.pdvpostocombustivel.enums.TipoEstoque;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalTime; // Importar LocalTime, se necessário para outros campos
 
 
 @Entity
@@ -17,6 +16,10 @@ public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne // Relacionamento com Produto
+    @JoinColumn(name = "produto_id", nullable = false) // Coluna de chave estrangeira
+    private Produto produto;
 
     //atributos
     @Column(length = 10,nullable = false)
@@ -42,7 +45,7 @@ public class Estoque {
     protected Estoque() {}
 
     //construtor
-    public Estoque(BigDecimal quantidade, String localTanque, String localEndereco, String loteFabricacao, LocalDate dataValidade, TipoEstoque tipoEstoque){
+    public Estoque( BigDecimal quantidade, String localTanque, String localEndereco, String loteFabricacao, LocalDate dataValidade, TipoEstoque tipoEstoque){
         this.quantidade = quantidade;
         this.localTanque = localTanque;
         this.localEndereco = localEndereco;
@@ -96,4 +99,5 @@ public class Estoque {
     public void setTipoEstoque(TipoEstoque tipoEstoque){
         this.tipoEstoque = tipoEstoque;
     }
+
 }

@@ -64,6 +64,13 @@
             <version>1.3.30</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.29</version> <!-- Usar uma versão estável -->
+        </dependency>
+
+
         <!-- Devtools (apenas dev) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

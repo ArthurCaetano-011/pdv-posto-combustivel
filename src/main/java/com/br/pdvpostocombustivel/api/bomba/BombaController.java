@@ -1,7 +1,7 @@
 package com.br.pdvpostocombustivel.api.bomba;
 
 import com.br.pdvpostocombustivel.domain.entity.Bomba;
-import com.br.pdvpostocombustivel.api.bomba.BombaService;
+import com.br.pdvpostocombustivel.api.bomba.BombaService; // Importação corrigida
 import com.br.pdvpostocombustivel.enums.BombaStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
