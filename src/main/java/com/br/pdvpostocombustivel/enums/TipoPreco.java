@@ -1,8 +1,8 @@
 package com.br.pdvpostocombustivel.enums;
 
 public enum TipoPreco {
-    VALORUNITARIO("Valor unitário"),
-    VALORTOTAL("Valor Total");
+    UNITARIO("Valor unitário"),
+    TOTAL("Valor Total");
 
     private final String descricao;
 

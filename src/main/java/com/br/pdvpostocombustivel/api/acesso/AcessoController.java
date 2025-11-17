@@ -2,10 +2,15 @@ package com.br.pdvpostocombustivel.api.acesso;
 
 import com.br.pdvpostocombustivel.api.acesso.dto.AcessoRequest;
 import com.br.pdvpostocombustivel.api.acesso.dto.AcessoResponse;
+import com.br.pdvpostocombustivel.api.acesso.dto.LoginRequest;
+import com.br.pdvpostocombustivel.api.acesso.dto.LoginResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.security.auth.login.LoginException;
 
 @RestController
 @RequestMapping("/api/v1/acessos")
@@ -15,6 +20,16 @@ public class AcessoController {
 
     public AcessoController (AcessoService service){
         this.service = service;
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
+        try {
+            LoginResponse loginResponse = service.authenticate(loginRequest);
+            return ResponseEntity.ok(loginResponse);
+        } catch (LoginException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
     @PostMapping

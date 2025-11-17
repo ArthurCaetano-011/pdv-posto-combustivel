@@ -1,8 +1,9 @@
 package com.br.pdvpostocombustivel.api.acesso;
 
-
 import com.br.pdvpostocombustivel.api.acesso.dto.AcessoRequest;
 import com.br.pdvpostocombustivel.api.acesso.dto.AcessoResponse;
+import com.br.pdvpostocombustivel.api.acesso.dto.LoginRequest;
+import com.br.pdvpostocombustivel.api.acesso.dto.LoginResponse;
 import com.br.pdvpostocombustivel.domain.entity.Acesso;
 import com.br.pdvpostocombustivel.domain.repository.AcessoRepository;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import javax.security.auth.login.LoginException;
 
 @Service
 @Transactional
@@ -23,13 +25,30 @@ public class AcessoService {
         this.repository = repository;
     }
 
+    // AUTHENTICATE
+    @Transactional(readOnly = true)
+    public LoginResponse authenticate(LoginRequest loginRequest) throws LoginException {
+        Acesso acesso = repository.findByUsuario(loginRequest.usuario())
+                .orElseThrow(() -> new LoginException("Usuário ou senha inválidos."));
+
+        // TODO: Implementar a verificação de senha com criptografia (ex: BCrypt)
+        if (!acesso.getSenha().equals(loginRequest.senha())) {
+            throw new LoginException("Usuário ou senha inválidos.");
+        }
+
+        // TODO: Gerar um token JWT real
+        String token = "fake-jwt-token-for-" + acesso.getUsuario();
+
+        return new LoginResponse(token, acesso.getTipoAcesso());
+    }
+
     // CREATE
     public AcessoResponse create(AcessoRequest req) {
         Acesso novoAcesso = toEntity(req);
         return toResponse(repository.save(novoAcesso));
     }
 
-    // READ by ID - validar a utilização desse método
+    // READ by ID
     @Transactional(readOnly = true)
     public AcessoResponse getById(Long id) {
         Acesso a = repository.findById(id)
@@ -52,7 +71,7 @@ public class AcessoService {
         return repository.findAll(pageable).map(this::toResponse);
     }
 
-    // UPDATE  - substitui todos os campos
+    // UPDATE
     public AcessoResponse update(Long id, AcessoRequest req) {
         Acesso a = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Acesso não encontrado. id=" + id));
@@ -68,7 +87,7 @@ public class AcessoService {
         return toResponse(repository.save(a));
     }
 
-    // PATCH - atualiza apenas campos não nulos
+    // PATCH
     public AcessoResponse patch(Long id, AcessoRequest req) {
         Acesso a = repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Acesso não encontrado. id=" + id));

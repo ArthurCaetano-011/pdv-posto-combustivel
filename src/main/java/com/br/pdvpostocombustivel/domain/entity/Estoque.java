@@ -6,7 +6,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 
 @Entity
 @Table(name = "estoques")
@@ -30,7 +32,7 @@ public class Estoque {
     private String loteFabricacao;
 
     @Column(length = 10,nullable = false)
-    private Date dataValidade;
+    private LocalDate dataValidade;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -40,7 +42,7 @@ public class Estoque {
     protected Estoque() {}
 
     //construtor
-    public Estoque(BigDecimal quantidade, String localTanque, String localEndereco, String loteFabricacao, Date dataValidade, TipoEstoque tipoEstoque){
+    public Estoque(BigDecimal quantidade, String localTanque, String localEndereco, String loteFabricacao, LocalDate dataValidade, TipoEstoque tipoEstoque){
         this.quantidade = quantidade;
         this.localTanque = localTanque;
         this.localEndereco = localEndereco;
@@ -62,7 +64,7 @@ public class Estoque {
     public String getLoteFabricacao(){
         return loteFabricacao;
     }
-    public Date getDataValidade(){
+    public LocalDate getDataValidade(){
         return dataValidade;
     }
     public TipoEstoque getTipoEstoque(){
@@ -88,7 +90,7 @@ public class Estoque {
     public void setLoteFabricacao(String loteFabricacao) {
         this.loteFabricacao = loteFabricacao;
     }
-    public void setDataValidade(Date dataValidade){
+    public void setDataValidade(LocalDate dataValidade){
         this.dataValidade = dataValidade;
     }
     public void setTipoEstoque(TipoEstoque tipoEstoque){

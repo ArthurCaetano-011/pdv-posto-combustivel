@@ -1,10 +1,8 @@
 package com.br.pdvpostocombustivel.enums;
 
 public enum TipoCusto {
-    CUSTOSFIXOS("Custos Fixo"),
-    CUSTOVARIAVEIS("Custos Variáveis"),
-    CUSTOFRETE("Custo de Frete"),
-    IMPOSTO("Custo de Imposto");
+    CUSTOSFIXOS("Custos Fixos"),    // Renomeado de FIXO
+    CUSTOSVARIAVEIS("Custos Variáveis"); // Renomeado de VARIAVEL
 
     private final String descricao;
 

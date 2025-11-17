@@ -1,17 +1,22 @@
 package com.br.pdvpostocombustivel.api.preco.dto;
 
 import com.br.pdvpostocombustivel.enums.TipoPreco;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 
 //Para entrada
 public record PrecoRequest(
      BigDecimal valor,
-     Date dataAlteracao,
-     Date horaAlteracao,
+     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+     LocalDate dataAlteracao,
+     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+     LocalDate horaAlteracao,
      TipoPreco tipoPreco
 ) {
+
 }

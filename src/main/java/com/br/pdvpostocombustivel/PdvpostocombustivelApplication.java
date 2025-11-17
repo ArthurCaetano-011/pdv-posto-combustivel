@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.info.License;
 import io.swagger.v3.oas.annotations.servers.Server;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.br.pdvpostocombustivel", "org.example"})
 @OpenAPIDefinition(
         info = @Info(
                 title = "PDV Posto Combustível API",

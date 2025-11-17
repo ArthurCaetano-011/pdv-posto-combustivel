@@ -1,12 +1,12 @@
 package com.br.pdvpostocombustivel.domain.entity;
 
-import com.br.pdvpostocombustivel.enums.TipoEstoque;
+
 import com.br.pdvpostocombustivel.enums.TipoPreco;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.Date;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "precos")
@@ -21,10 +21,10 @@ public class Preco {
     private BigDecimal valor;
 
     @Column(length = 10,nullable = false)
-    private Date dataAlteracao;
+    private LocalDate dataAlteracao;
 
-    @Column(length = 10, nullable = false)
-    private Date horaAlteracao;
+    @Column(length = 10,nullable = false)
+    private LocalDate horaAlteracao;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -35,7 +35,7 @@ public class Preco {
     protected Preco() {}
 
     //construtor
-    public Preco(BigDecimal valor, Date dataAlteracao, Date horaAlteracao,TipoPreco tipoPreco) {
+    public Preco(BigDecimal valor, LocalDate dataAlteracao, LocalDate horaAlteracao,TipoPreco tipoPreco) {
         this.valor = valor;
         this.dataAlteracao = dataAlteracao;
         this.horaAlteracao = horaAlteracao;
@@ -46,10 +46,10 @@ public class Preco {
     public BigDecimal getValor(){
         return valor;
     }
-    public Date getDataAlteracao(){
+    public LocalDate getDataAlteracao(){
         return dataAlteracao;
     }
-    public Date getHoraAlteracao(){
+    public LocalDate getHoraAlteracao(){
         return horaAlteracao;
     }
     public Long getId(){
@@ -63,10 +63,10 @@ public class Preco {
     public void setValor (BigDecimal valor){
         this.valor = valor;
     }
-    public void setDataAlteracao (Date dataAlteracao){
+    public void setDataAlteracao (LocalDate dataAlteracao){
         this.dataAlteracao = dataAlteracao;
     }
-    public void setHoraAlteracao (Date horaAlteracao){
+    public void setHoraAlteracao (LocalDate horaAlteracao){
         this.horaAlteracao = horaAlteracao;
     }
     public void setId(Long id){
